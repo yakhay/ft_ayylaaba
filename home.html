@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./home.css">
+</head>
+<body>
+    <div class="ball"></div>
+    <div class="ball2"></div>
+    <nav class="navbar">
+        <div class="navbar-logo">
+            <a class="nav-link" data-target="home"><img src="./resrc/media/logo.png" alt="Logo"></a>
+        </div>
+        <div class="navbar-buttons">
+            <ul>
+                <li><a class="nav-link" data-target="home" href="#home">Home</a></li>
+                <li><a class="nav-link" data-target="profile" href="#profile">Profile</a></li>
+                <li><div class="profil"><img src="./resrc/profil_team/yakhay-removebg-preview.png" alt=""></div></li>
+            </ul>
+        </div>
+    </nav>
+    
+    <div class="container">
+        <aside>
+            <div class="aside_content">
+                <div class="image1">
+                    <ul>
+                        <!-- <li><a class="settings-button" onclick="showSettingsModal()"><div class="seting_icon"></div></a></li> -->
+                        <li><a class="notification" onclick="showNotificationsModal()"><div    class="notification_icon aside_button"></div></a></li>
+                        <li><a class="nav-link" data-target="chat" href=""><div    class="chat_icon  aside_button"></div></a></li>
+                    </ul>
+                </div>
+                <div class="image2">
+                    <ul>
+                        <li><a class="settings-button" onclick="showSettingsModal()"><div class="seting_icon"></div></a></li>
+                        <li><a class="logout-button og_out_icon aside_button" onclick="showLogoutModal()"><div class="log_out_icon"></div></a></li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </aside>
+        <article>
+            <div id="home" class="content-section home">
+                <div class="game">
+                    <img src="./resrc/normal.jpeg" alt="">
+                    <button>play with friends</button>
+                </div>
+                <div class="game">
+                    <img src="./resrc/ai_game.jpeg" alt="">
+                    <button>play with IA</button>
+                </div>
+                <div class="challenge">
+                    <div class="center">
+                        <h2>challenge friends</h2>
+                    </div>
+                    <div class="list_friend"></div>
+                </div>
+                <div class="invite">
+                    <div class="center">
+                        <h2>invite to friends</h2>
+                    </div>
+                    <div class="list_friend"></div>
+                </div>
+            </div>
+            <div id="profile" class="content-section profile">
+                <div class="welcome">
+                    <div>
+                        <div class="image_to_profile"></div>
+                        <h3 id="login">yakhay</h3>
+                    </div>
+                    <div>
+                        <div class="rank"></div>
+                        <h3 id="content_rank">1</h3>
+                    </div>
+                    <div class="scor">
+                        <div><h1>scor</h1></div>
+                        <div id="content_scor">450</div>
+                    </div>
+                </div>
+                <div class="data">
+                    <div class="leadrboard">
+                        <div class="data_titel"><h2>leadrboard</h2></div>
+                    </div>
+                    <div class="global_data">
+                        <div class="data_titel">
+                            <a href="#"><h2>friends</h2></a>
+                            <a href="#"><h2>match history</h2></a>
+                            <a href="#"><h2>channels</h2></a>
+                        </div>
+                    </div>
+                    <div class="achievements">
+                        <div class="data_titel"><h2>achievements</h2></div>
+                    </div>
+                </div>
+            </div>
+            <div id="chat" class="content-section aside-co">
+                <div class="friend-list">
+                    <h2>Friends</h2>
+                    <ul id="friends">
+                        <li onclick="openChat('Alice')">Alice</li>
+                        <li onclick="openChat('Bob')">Bob</li>
+                        <li onclick="openChat('Charlie')">Charlie</li>
+                    </ul>
+                </div>
+                <div class="chat-container">
+                    <div id="chat-header" class="chat-header">
+                        <h2 id="chat-friend-name">Select a friend to chat</h2>
+                    </div>
+                    <div id="chat-messages" class="chat-messages">
+                        <!-- Chat messages will appear here -->
+                    </div>
+                    <div class="chat-input">
+                        <input type="text" id="message-input" placeholder="Type a message...">
+                        <button onclick="sendMessage()">Send</button>
+                    </div>
+                </div>
+            </div>
+            <div id="notifi" class="content-section">
+                <div class="notification-contiener">
+                    <!-- <span class="close" onclick="closeNotificationsModal()">&times;</span> -->
+                    <div class="modal-content">
+                    <span class="close" onclick="closeNotificationsModal()">&times;</span>
+
+                    </div>
+                </div>
+                
+            </div>
+            <div id="logout-modal" class="modal">
+                <div class="modal-content">
+                    <span class="close" onclick="closeLogoutModal()">&times;</span>
+                    <h2>Confirm Logout</h2>
+                    <p>Are you sure you want to logout?</p>
+                    <button class="confirm-button" onclick="logout()">Yes</button>
+                    <button class="cancel-button" onclick="closeLogoutModal()">No</button>
+                </div>
+            </div>
+        
+            <div id="settings-modal" class="settings-modal">
+                <div class="setting-contiener">
+                        <div class="modal-content">
+                            <span class="close" onclick="closeSettingsModal()">&times;</span>
+                        </div>
+                        <div>
+                            <h2>Edit Profile</h2>
+                            
+                            <div class="settings-form">
+                                <div class="image_to_profile"></div>
+                                    <label for="profileImage">new Profile Image</label>
+                                    <!-- <img id="profileImagePreview" src="default-profile.png" alt="Profile Image" class="profile-image"> -->
+                                    <input type="file" id="profileImage" accept="image/*" onchange="previewImage(event)">
+                                    <label for="username">yakhay</label>
+                                    <input type="text" id="username" placeholder="Enter new username">
+                                <button class="save-button" onclick="saveSettings()">Save Changes</button>
+                        </div>
+                </div>
+                </div>
+                
+            </div>
+        </article>
+    </div>
+    
+
+    <script src="script.js"></script>
+</body>
+</html>
